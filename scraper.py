@@ -3,15 +3,15 @@ import datetime
 import csv
 
 # add your api key here from https://newsapi.org/
-newsapi = NewsApiClient(api_key='YOUR_API_KEY')
+newsapi = NewsApiClient(api_key='d78ed1ef62f64eb1803611cad5f6e6a9')
 
-query = 'tcs'
-start_date = datetime.date(2024, 2, 1)
+query = 'tata motors'
+start_date = datetime.date(2023, 9, 15)
 end_date = start_date + datetime.timedelta(days=1)
 iters=30         # number of iterations is capped at 30 for the free version of the API
 
 # open a csv file to write the date and titles to
-with open('tcs_news.csv', mode='w', newline='') as file:
+with open(query+".csv", mode='w', newline='') as file:
     writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     writer.writerow(['Date', 'Title'])
 

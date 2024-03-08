@@ -16,14 +16,15 @@ search_box.send_keys(Keys.RETURN)
 
 time.sleep(2)
 
-news_tab = driver.find_element(By.XPATH, "//a[@class='LatpMc nPDzT T3FoJb']")
+news_tab = driver.find_element(By.XPATH, "//*[contains(text(), 'News')]")
 time.sleep(2)
 news_tab.click()
 
 time.sleep(2)
+print("24")
 
 news_articles = driver.find_elements(By.XPATH, "//div[@class='tF2Cxc']")
-
+print("27")
 date_format = "%b %d, %Y"
 
 for article in news_articles:
