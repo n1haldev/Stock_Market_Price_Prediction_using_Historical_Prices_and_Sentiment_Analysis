@@ -8,6 +8,7 @@ import time
 q="Tata Motors"
 start_date=dt.date(2019,3,14)
 news_data=defaultdict(list)
+date_today=dt.date.today()
 
 def scrape_news(q,date):
     day=date.day
@@ -25,18 +26,22 @@ def scrape_news(q,date):
     for title in titles[:3]:
         news_data[date_str].append(title.text)
 
-#iterate over the dates
-for i in range(30):
+#iterate over the dates from start_date to today
+while start_date<=date_today:
+    print("Scraping news for ",start_date,"...")
     scrape_news(q,start_date)
     start_date+=dt.timedelta(days=1)
-    #sleep for 1 second to avoid getting blocked
     time.sleep(1)
 
 #write the dictionary to a csv file with date and title as columns
-with open('tata_motors_news.csv', mode='w', newline='', encoding='utf-8') as file:
+with open(q+'_news.csv', mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    writer.writerow(['Date', 'Title'])
+    writer.writerow(['Date', 'Titles'])
+
     for date in news_data:
+        titles=""
         for title in news_data[date]:
-            writer.writerow([date, title])
+            titles+=title+'. '
+        writer.writerow([date, titles])
+
 
