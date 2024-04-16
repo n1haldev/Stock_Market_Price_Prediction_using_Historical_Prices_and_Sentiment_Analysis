@@ -1,7 +1,7 @@
 import pandas as pd
 
 df1 = pd.read_csv('TATAMOTORS.NS.csv')
-df2 = pd.read_csv('Tata Motors_news_filtered.csv')
+df2 = pd.read_csv('Tata_Motors_news_filtered.csv')
 
 df1['Date'] = pd.to_datetime(df1['Date'], format='%Y-%m-%d')
 df2['Date'] = pd.to_datetime(df2['Date'], format='%d-%m-%Y')
